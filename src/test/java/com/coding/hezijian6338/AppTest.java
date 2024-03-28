@@ -196,11 +196,11 @@ class AppTest {
     void st99_3() throws Exception {
         Solution solution = new Solution();
         solution.outputStageOne(new ArrayList<String>(), res -> {
-           assertTrue(true);
+            assertTrue(true);
         });
         solution.outputStageTwo(new ArrayList<String>(), res -> {
             assertTrue(true);
-         });
+        });
     }
 
     /**
