@@ -8,13 +8,13 @@ import java.util.function.Consumer;
  * 解决办法.
  * @author hezijian6338
  */
-public class Solution {
+public class Solution extends Alphabet {
     /**
      * 第一阶段要求返回.
      * @param list
      * @param consumer
      */
-    public void outputStageOne(List<String> list, Consumer<List<String>> consumer) {
+    public void outputStageOne(List<String> list, Consumer<List<String>> consumer) throws Exception {
         System.out.println(Optional.ofNullable(list));
     }
 
@@ -23,7 +23,7 @@ public class Solution {
      * @param list
      * @param consumer
      */
-    public void outputStageTwo(List<String> list, Consumer<List<String>> consumer) {
+    public void outputStageTwo(List<String> list, Consumer<List<String>> consumer) throws Exception {
         System.out.println(Optional.ofNullable(list));
     }
 }

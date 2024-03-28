@@ -12,8 +12,9 @@ import com.coding.hezijian6338.service.Solution;
  * @author hezijian6338
  */
 public final class ConsecutiveImpl extends Solution implements Consecutive {
-    public void stageOne(List<String> list, Consumer<List<String>> consumer) {
+    public void stageOne(List<String> list, Consumer<List<String>> consumer) throws Exception {
         if (list.size() == 0) {
+            consumer.accept(list);
         }
 
         List<String> res = new ArrayList<>();
@@ -21,6 +22,9 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
         for (int i = 0; i < list.size(); i++) {
             if (i + 2 < list.size()) {
                 String curr = list.get(i);
+                if (!this.isInAlphabet(curr.charAt(0))) {
+                    throw new Exception("不在字母表中! ");
+                }
                 String next = list.get(i + 1);
                 String nextTwo = list.get(i + 2);
                 if (curr.equals(next) && curr.equals(nextTwo)) {
@@ -36,8 +40,9 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
         consumer.accept(res);
     }
 
-    public void stageTwo(List<String> list, Consumer<List<String>> consumer) {
+    public void stageTwo(List<String> list, Consumer<List<String>> consumer) throws Exception {
         if (list.size() == 0) {
+            consumer.accept(list);
         }
 
         List<String> res = new ArrayList<>();
@@ -45,12 +50,13 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
         for (int i = 0; i < list.size(); i++) {
             if (i + 2 < list.size()) {
                 String curr = list.get(i);
+                if (!this.isInAlphabet(curr.charAt(0))) {
+                    throw new Exception("不在字母表中! ");
+                }
                 String next = list.get(i + 1);
                 String nextTwo = list.get(i + 2);
                 if (curr.equals(next) && curr.equals(nextTwo)) {
                     int aInt = 97;
-                    char a = 'a';
-                    System.out.println((int) a);
                     char c = (char) (curr.charAt(0) - 1);
                     int cInt = (int) c;
                     if (cInt >= aInt) {
@@ -69,7 +75,7 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
     }
 
     @Override
-    public void outputStageOne(List<String> list, Consumer<List<String>> consumer) {
+    public void outputStageOne(List<String> list, Consumer<List<String>> consumer) throws Exception {
         this.stageOne(list, res -> {
             // 和源数据一致.
             if (res.size() == list.size()) {
@@ -77,13 +83,18 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
             } else {
                 List<String> nList = new ArrayList<>();
                 nList.addAll(res);
-                outputStageOne(nList, consumer);
+                System.out.println("-> " + nList.toString().replace("[", "").replace("]", "").replace(",", "").trim());
+                try {
+                    outputStageOne(nList, consumer);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
 
     @Override
-    public void outputStageTwo(List<String> list, Consumer<List<String>> consumer) {
+    public void outputStageTwo(List<String> list, Consumer<List<String>> consumer) throws Exception {
         this.stageTwo(list, res -> {
             // 和源数据一致.
             if (res.size() == list.size()) {
@@ -91,8 +102,12 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
             } else {
                 List<String> nList = new ArrayList<>();
                 nList.addAll(res);
-                System.out.println(nList);
-                outputStageTwo(nList, consumer);
+                System.out.println("-> " + nList.toString().replace("[", "").replace("]", "").replace(",", "").trim());
+                try {
+                    outputStageTwo(nList, consumer);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
