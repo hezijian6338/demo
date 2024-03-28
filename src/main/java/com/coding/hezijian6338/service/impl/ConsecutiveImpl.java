@@ -72,13 +72,13 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
             if (i + 2 < list.size()) {
                 String next = list.get(i + 1);
                 String nextTwo = list.get(i + 2);
-                if (curr.equals(next) && curr.equals(nextTwo)) {
-                    char c = (char) (curr.charAt(0) - 1);
-                    int cInt = (int) c;
-                    if (cInt >= getAint()) {
-                        res.add(String.valueOf(c));
-                        System.out.println(curr + " is replaced by " + c);
-                    }
+                char c = (char) (curr.charAt(0) - 1);
+                int cInt = (int) c;
+                if (curr.equals(next) && curr.equals(nextTwo) && cInt >= getAint()) {
+                    res.add(String.valueOf(c));
+                    System.out.println(curr + curr + curr + " is replaced by " + c);
+                    j = i + 2;
+                } else if (curr.equals(next) && curr.equals(nextTwo)) {
                     j = i + 2;
                 } else {
                     res.add(list.get(i));
