@@ -13,7 +13,8 @@ import java.util.List;
 class AppTest {
     /**
      * st.1 基础任务, 正确值测试. (阶段1 单次)
-     * @throws Exception 
+     * 
+     * @throws Exception
      */
     @Test
     void st1() throws Exception {
@@ -38,8 +39,9 @@ class AppTest {
     }
 
     /**
-     * 基础任务, 正确值测试. (阶段1 完整结果)
-     * @throws Exception 
+     * st.2 基础任务, 正确值测试. (阶段1 完整结果)
+     * 
+     * @throws Exception
      */
     @Test
     void st2() throws Exception {
@@ -50,8 +52,9 @@ class AppTest {
     }
 
     /**
-     * 基础任务, 正确值测试. (阶段2 完整结果)
-     * @throws Exception 
+     * st.3 基础任务, 正确值测试. (阶段2 完整结果)
+     * 
+     * @throws Exception
      */
     @Test
     void st3() throws Exception {
@@ -62,14 +65,36 @@ class AppTest {
     }
 
     /**
-     * 数组空值测试. (阶段1)
-     * @throws Exception 
+     * st.4.1 数组空值测试. (阶段1)
+     * 
+     * @throws Exception
      */
     @Test
-    void st4() throws Exception {
+    void st4_1() throws Exception {
         ConsecutiveImpl consecutive = new ConsecutiveImpl();
         consecutive.outputStageOne(Arrays.asList(), r -> {
             assertEquals(Arrays.asList(), r);
-        }); 
+        });
+    }
+
+    /**
+     * st.4.2 数组空值测试. (阶段2)
+     * 
+     * @throws Exception
+     */
+    @Test
+    void st4_2() throws Exception {
+        ConsecutiveImpl consecutive = new ConsecutiveImpl();
+        consecutive.outputStageTwo(Arrays.asList(), r -> {
+            assertEquals(Arrays.asList(), r);
+        });
+    }
+
+    @Test
+    void st5_1() throws Exception {
+        ConsecutiveImpl consecutive = new ConsecutiveImpl();
+        consecutive.outputStageTwo(Arrays.asList("["), r -> {
+            assertEquals(Arrays.asList(), r);
+        });
     }
 }

@@ -12,13 +12,15 @@ public interface Consecutive {
      * 第一阶段任务.
      * @param list
      * @param consumer
+     * @throws Exception 
      */
-   void stageOne(List<String> list, Consumer<List<String>> consumer); 
+   void stageOne(List<String> list, Consumer<List<String>> consumer) throws Exception; 
 
    /**
     * 第二阶段任务.
     * @param list
     * @param consumer
+ * @throws Exception 
     */
-   void stageTwo(List<String> list, Consumer<List<String>> consumer); 
+   void stageTwo(List<String> list, Consumer<List<String>> consumer) throws Exception; 
 }
