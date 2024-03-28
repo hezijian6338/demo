@@ -22,7 +22,8 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
         for (int i = 0; i < list.size(); i++) {
             String curr = list.get(i);
             if (!this.isInAlphabet(curr.charAt(0))) {
-                consumer.accept(null);
+                res.clear();
+                consumer.accept(res);
                 throw new Exception("不在字母表中! ");
             }
             if (i + 2 < list.size()) {
@@ -64,6 +65,7 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
                     int cInt = (int) c;
                     if (cInt >= aInt) {
                         res.add(String.valueOf(c));
+                        System.out.println(curr + " is replaced by " + c);
                     }
                     i = i + 2;
                 } else {

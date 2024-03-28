@@ -111,7 +111,7 @@ class AppTest {
     }
 
     /**
-     * st.5.1 数组不在字母表中. (阶段1)
+     * st.5.2 数组不在字母表中. (阶段2)
      * 
      * @throws Exception
      */
@@ -142,7 +142,7 @@ class AppTest {
      */
     @Test
     void st99_2() {
-        char t = "a".charAt(0);
+        char t = "c".charAt(0);
         Alphabet al = new Alphabet();
         boolean res = al.isInAlphabet(t);
         assertTrue(res);

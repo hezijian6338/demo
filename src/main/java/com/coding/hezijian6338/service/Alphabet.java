@@ -7,8 +7,8 @@ package com.coding.hezijian6338.service;
 public class Alphabet {
     public boolean isInAlphabet(char alphabet) {
         final char a = 'a';
-        final char b = 'b';
-        if (alphabet >= a && alphabet <= b) {
+        final char z = 'z';
+        if (alphabet >= a && alphabet <= z) {
             return true;
         } else {
             return false;
