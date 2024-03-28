@@ -1,36 +1,42 @@
 package com.coding.hezijian6338.service.impl;
 
+import com.coding.hezijian6338.service.Consecutive;
+import com.coding.hezijian6338.service.Solution;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import com.coding.hezijian6338.service.Consecutive;
-import com.coding.hezijian6338.service.Solution;
 
 /**
  * 替换 3个或者以上的相同字符串.
- * 
  * @author hezijian6338
  */
 public final class ConsecutiveImpl extends Solution implements Consecutive {
-    public void stageOne(List<String> list, Consumer<List<String>> consumer) throws Exception {
+    /**
+     * 第一阶段的任务 (分段).
+     */
+    public void stageOne(List<String> list, Consumer<List<String>> consumer) throws IllegalArgumentException {
         if (list.size() == 0) {
             consumer.accept(list);
         }
 
         List<String> res = new ArrayList<>();
 
+        int j = 0;
         for (int i = 0; i < list.size(); i++) {
+            if (j != 0 && j >= i) {
+                continue;
+            }
             String curr = list.get(i);
             if (!this.isInAlphabet(curr.charAt(0))) {
                 res.clear();
                 consumer.accept(res);
-                throw new Exception("不在字母表中! ");
+                throw new IllegalArgumentException("不在字母表中! ");
             }
             if (i + 2 < list.size()) {
                 String next = list.get(i + 1);
                 String nextTwo = list.get(i + 2);
                 if (curr.equals(next) && curr.equals(nextTwo)) {
-                    i = i + 2;
+                    j = i + 2;
                 } else {
                     res.add(list.get(i));
                 }
@@ -42,32 +48,38 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
         consumer.accept(res);
     }
 
-    public void stageTwo(List<String> list, Consumer<List<String>> consumer) throws Exception {
+    /**
+     * 第二阶段任务 (分段).
+     */
+    public void stageTwo(List<String> list, Consumer<List<String>> consumer) throws IllegalArgumentException {
         if (list.size() == 0) {
             consumer.accept(list);
         }
 
         List<String> res = new ArrayList<>();
 
+        int j = 0;
         for (int i = 0; i < list.size(); i++) {
+            if (j != 0 && j >= i) {
+                continue;
+            }
             String curr = list.get(i);
             if (!this.isInAlphabet(curr.charAt(0))) {
                 res.clear();
                 consumer.accept(res);
-                throw new Exception("不在字母表中! ");
+                throw new IllegalArgumentException("不在字母表中! ");
             }
             if (i + 2 < list.size()) {
                 String next = list.get(i + 1);
                 String nextTwo = list.get(i + 2);
                 if (curr.equals(next) && curr.equals(nextTwo)) {
-                    int aInt = 97;
                     char c = (char) (curr.charAt(0) - 1);
                     int cInt = (int) c;
-                    if (cInt >= aInt) {
+                    if (cInt >= getAint()) {
                         res.add(String.valueOf(c));
                         System.out.println(curr + " is replaced by " + c);
                     }
-                    i = i + 2;
+                    j = i + 2;
                 } else {
                     res.add(list.get(i));
                 }
@@ -79,8 +91,11 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
         consumer.accept(res);
     }
 
+    /**
+     * 重写输出方法, 实现更符合.
+     */
     @Override
-    public void outputStageOne(List<String> list, Consumer<List<String>> consumer) throws Exception {
+    public void outputStageOne(List<String> list, Consumer<List<String>> consumer) throws IllegalArgumentException {
         this.stageOne(list, res -> {
             // 和源数据一致.
             if (res.size() == list.size()) {
@@ -91,15 +106,18 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
                 System.out.println("-> " + nList.toString().replace("[", "").replace("]", "").replace(",", "").trim());
                 try {
                     outputStageOne(nList, consumer);
-                } catch (Exception e) {
+                } catch (IllegalArgumentException e) {
                     e.printStackTrace();
                 }
             }
         });
     }
 
+    /**
+     * 重写输出方法, 更符合.
+     */
     @Override
-    public void outputStageTwo(List<String> list, Consumer<List<String>> consumer) throws Exception {
+    public void outputStageTwo(List<String> list, Consumer<List<String>> consumer) throws IllegalArgumentException {
         this.stageTwo(list, res -> {
             // 和源数据一致.
             if (res.size() == list.size()) {
@@ -110,7 +128,7 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
                 System.out.println("-> " + nList.toString().replace("[", "").replace("]", "").replace(",", "").trim());
                 try {
                     outputStageTwo(nList, consumer);
-                } catch (Exception e) {
+                } catch (IllegalArgumentException e) {
                     e.printStackTrace();
                 }
             }

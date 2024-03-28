@@ -9,18 +9,18 @@ import java.util.function.Consumer;
  */
 public interface Consecutive {
     /**
-     * 第一阶段任务.
-     * @param list
-     * @param consumer
-     * @throws Exception 
-     */
-   void stageOne(List<String> list, Consumer<List<String>> consumer) throws Exception; 
+    * 第一阶段任务.
+    * @param list
+    * @param consumer
+    * @throws IllegalArgumentException
+    */
+    void stageOne(List<String> list, Consumer<List<String>> consumer) throws IllegalArgumentException;
 
-   /**
+    /**
     * 第二阶段任务.
     * @param list
     * @param consumer
- * @throws Exception 
+    * @throws IllegalArgumentException
     */
-   void stageTwo(List<String> list, Consumer<List<String>> consumer) throws Exception; 
+    void stageTwo(List<String> list, Consumer<List<String>> consumer) throws IllegalArgumentException;
 }
