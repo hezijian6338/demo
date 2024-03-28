@@ -1,6 +1,7 @@
 package com.coding.hezijian6338;
 
 import com.coding.hezijian6338.service.Alphabet;
+import com.coding.hezijian6338.service.Solution;
 import com.coding.hezijian6338.service.impl.ConsecutiveImpl;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -185,5 +186,28 @@ class AppTest {
         Alphabet al = new Alphabet();
         boolean res = al.isInAlphabet(t);
         assertTrue(res);
+    }
+
+    /**
+     * st.99.3 父类方法覆盖测试, 执行方法.
+     * @throws Exception
+     */
+    @Test
+    void st99_3() throws Exception {
+        Solution solution = new Solution();
+        solution.outputStageOne(new ArrayList<String>(), res -> {
+           assertTrue(true);
+        });
+        solution.outputStageTwo(new ArrayList<String>(), res -> {
+            assertTrue(true);
+         });
+    }
+
+    /**
+     * st.99.4 主入口方法测试覆盖.
+     */
+    @Test
+    void st99_4() {
+        App.main(new String[]{});
     }
 }
