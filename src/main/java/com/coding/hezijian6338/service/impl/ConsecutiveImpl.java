@@ -20,11 +20,12 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
         List<String> res = new ArrayList<>();
 
         for (int i = 0; i < list.size(); i++) {
+            String curr = list.get(i);
+            if (!this.isInAlphabet(curr.charAt(0))) {
+                consumer.accept(null);
+                throw new Exception("不在字母表中! ");
+            }
             if (i + 2 < list.size()) {
-                String curr = list.get(i);
-                if (!this.isInAlphabet(curr.charAt(0))) {
-                    throw new Exception("不在字母表中! ");
-                }
                 String next = list.get(i + 1);
                 String nextTwo = list.get(i + 2);
                 if (curr.equals(next) && curr.equals(nextTwo)) {
@@ -48,11 +49,13 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
         List<String> res = new ArrayList<>();
 
         for (int i = 0; i < list.size(); i++) {
+            String curr = list.get(i);
+            if (!this.isInAlphabet(curr.charAt(0))) {
+                res.clear();
+                consumer.accept(res);
+                throw new Exception("不在字母表中! ");
+            }
             if (i + 2 < list.size()) {
-                String curr = list.get(i);
-                if (!this.isInAlphabet(curr.charAt(0))) {
-                    throw new Exception("不在字母表中! ");
-                }
                 String next = list.get(i + 1);
                 String nextTwo = list.get(i + 2);
                 if (curr.equals(next) && curr.equals(nextTwo)) {
