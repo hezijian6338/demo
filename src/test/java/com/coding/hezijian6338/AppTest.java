@@ -6,7 +6,6 @@ import com.coding.hezijian6338.service.Alphabet;
 import com.coding.hezijian6338.service.impl.ConsecutiveImpl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.Arrays;
