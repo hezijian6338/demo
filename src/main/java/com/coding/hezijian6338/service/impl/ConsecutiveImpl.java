@@ -104,11 +104,11 @@ public final class ConsecutiveImpl extends Solution implements Consecutive {
                 List<String> nList = new ArrayList<>();
                 nList.addAll(res);
                 System.out.println("-> " + nList.toString().replace("[", "").replace("]", "").replace(",", "").trim());
-                try {
+                // try {
                     outputStageOne(nList, consumer);
-                } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
-                }
+                // } catch (IllegalArgumentException e) {
+                    // e.printStackTrace();
+                // }
             }
         });
     }

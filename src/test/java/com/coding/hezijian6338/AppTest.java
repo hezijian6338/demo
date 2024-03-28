@@ -121,6 +121,51 @@ class AppTest {
     }
 
     /**
+     * st.6.1 数组部分不在字母表中. (阶段1)
+     * @throws Exception
+     */
+    @Test()
+    void st6_1() throws Exception {
+        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            ConsecutiveImpl consecutive = new ConsecutiveImpl();
+            consecutive.outputStageOne(Arrays.asList("a", "b", "c", ",", "d", "c", "c", "c"), r -> {
+                assertEquals(Arrays.asList(), r);
+            });
+        });
+        assertEquals("不在字母表中! ", exception.getMessage());
+    }
+
+    /**
+     * st.6.2 数组部分不在字母表中. (阶段2)
+     * @throws Exception
+     */
+    @Test()
+    void st6_2() throws Exception {
+        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            ConsecutiveImpl consecutive = new ConsecutiveImpl();
+            consecutive.outputStageTwo(Arrays.asList("a", "b", "c", ",", "d", "c", "c", "c"), r -> {
+                assertEquals(Arrays.asList(), r);
+            });
+        });
+        assertEquals("不在字母表中! ", exception.getMessage());
+    }
+
+    /**
+     * st.7.1 数组先前缀符合, 后缀部分不在字母表中. (阶段1)
+     * @throws Exception
+     */
+    @Test()
+    void st7_1() throws Exception {
+        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            ConsecutiveImpl consecutive = new ConsecutiveImpl();
+            consecutive.outputStageOne(Arrays.asList("a", "a", "a", ",", "d", "d", "c", "c"), r -> {
+                assertEquals(Arrays.asList(), r);
+            });
+        });
+        assertEquals("不在字母表中! ", exception.getMessage());
+    }
+
+    /**
      * st.99.1 父类方法测试, 不在字母表中.
      */
     @Test
